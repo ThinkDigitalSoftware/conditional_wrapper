@@ -2,10 +2,10 @@ import 'package:conditional_wrapper/conditional_wrapper.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ConditionalWrapperHome());
 }
 
-class MyApp extends StatelessWidget {
+class ConditionalWrapperHome extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,8 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
+final containerKey = GlobalKey(debugLabel: 'container');
 
 class _MyHomePageState extends State<MyHomePage> {
   bool shouldWrap = false;
@@ -60,6 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return Column(
                 children: <Widget>[
                   Container(
+                    key: containerKey,
                     padding: EdgeInsets.all(20),
                     child: child,
                     color: Colors.blue,
