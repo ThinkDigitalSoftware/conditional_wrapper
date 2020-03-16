@@ -10,8 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  conditional_wrapper: ^1.0.0
-
+  conditional_wrapper: ^1.0.1
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -28,9 +28,11 @@ class MyHomePage extends StatefulWidget {
 }
 
 final containerKey = GlobalKey(debugLabel: 'container');
+final containerKey2 = GlobalKey(debugLabel: 'container2');
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool shouldWrap = false;
+  bool shouldWrap1 = false;
+  bool showFirstOption = false;
 
   @override
   Widget build(BuildContext context) {
@@ -39,39 +41,99 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text('Conditional Wrapper Example'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Column(
+            mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text("Don't Wrap"),
-              Switch.adaptive(
-                  value: shouldWrap,
-                  onChanged: (value) {
-                    setState(() {
-                      shouldWrap = value;
-                    });
-                  }),
-              Text('Wrap'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text("Don't Wrap"),
+                  Switch.adaptive(
+                      value: shouldWrap1,
+                      onChanged: (value) {
+                        setState(() {
+                          shouldWrap1 = value;
+                        });
+                      }),
+                  Text('Wrap'),
+                ],
+              ),
+              ConditionalWrapper(
+                condition: shouldWrap1,
+                child: Text(shouldWrap1 ? 'Wrapped' : 'Unwrapped'),
+                builder: (BuildContext context, Widget child) {
+                  return Column(
+                    children: <Widget>[
+                      Container(
+                        key: containerKey,
+                        padding: EdgeInsets.all(20),
+                        child: child,
+                        color: Colors.blue,
+                      ),
+                      Text('Some other child inside a Column'),
+                    ],
+                  );
+                },
+              ),
             ],
           ),
           Divider(),
-          ConditionalWrapper(
-            condition: shouldWrap,
-            child: Text(shouldWrap ? 'Wrapped' : 'Unwrapped'),
-            builder: (BuildContext context, Widget child) {
-              return Column(
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Container(
-                    key: containerKey,
-                    padding: EdgeInsets.all(20),
-                    child: child,
-                    color: Colors.blue,
-                  ),
-                  Text('Some other child inside a Column'),
+                  Text("First Wrap Option"),
+                  Switch.adaptive(
+                      value: showFirstOption,
+                      onChanged: (value) {
+                        setState(() {
+                          showFirstOption = value;
+                        });
+                      }),
+                  Text('Second Wrap Option'),
                 ],
-              );
-            },
-          ),
+              ),
+              ConditionalWrapper(
+                condition: !showFirstOption,
+                ifFalse: (context, child) => Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue, width: 2)),
+                  padding: EdgeInsets.all(5),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Text('This is the second'),
+                      child,
+                      Text('wrapping option'),
+                    ],
+                  ),
+                ),
+                child: Container(
+                    padding: EdgeInsets.all(5),
+                    color: Colors.blue,
+                    child: Text('Child Widget')),
+                builder: (BuildContext context, Widget child) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.red, width: 2),
+                    ),
+                    padding: EdgeInsets.all(5),
+                    child: Column(
+                      children: <Widget>[
+                        Text('This is the first'),
+                        child,
+                        Text('wrapping option'),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ],
+          )
         ],
       ),
     );

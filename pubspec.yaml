@@ -5,7 +5,7 @@ issue_tracker: https://github.com/ThinkDigitalSoftware/conditional_wrapper/issue
 homepage: https://github.com/ThinkDigitalSoftware/conditional_wrapper
 
 
-version: 1.0.0
+version: 1.0.1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
