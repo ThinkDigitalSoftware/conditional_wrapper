@@ -12,16 +12,16 @@ class ConditionalWrapper extends StatelessWidget {
 
   /// How to display the widget if [condition] is true;
   final ConditionalWrapperBuilder builder;
-  final ConditionalWrapperBuilder ifFalse;
+  final ConditionalWrapperBuilder? ifFalse;
 
   /// The widget to be conditionally wrapped. This will be displayed alone if [condition] is false.
   final Widget child;
 
   const ConditionalWrapper({
-    Key key,
-    @required this.condition,
-    @required this.builder,
-    @required this.child,
+    Key? key,
+    required this.condition,
+    required this.builder,
+    required this.child,
     this.ifFalse,
   }) : super(key: key);
 
@@ -30,7 +30,7 @@ class ConditionalWrapper extends StatelessWidget {
     if (condition) {
       return builder(context, child);
     } else if (ifFalse != null) {
-      return ifFalse(context, child);
+      return ifFalse!(context, child);
     } else {
       return child;
     }
