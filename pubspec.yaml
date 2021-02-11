@@ -5,10 +5,10 @@ issue_tracker: https://github.com/ThinkDigitalSoftware/conditional_wrapper/issue
 homepage: https://github.com/ThinkDigitalSoftware/conditional_wrapper
 
 
-version: 1.0.1
+version: 2.0.0-nullsafety.0
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.12.0-0 <3.0.0"
 
 dependencies:
   flutter:
