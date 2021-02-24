@@ -1,4 +1,4 @@
-## [2.0.0-nullsafety.0] - 2/11/2021
+## [2.0.0] - 2/24/2021
 
 * Migrate to null safety
 * Add a widget test
