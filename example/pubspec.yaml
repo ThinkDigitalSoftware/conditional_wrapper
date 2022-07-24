@@ -1,7 +1,7 @@
 name: conditional_wrapper_example
 description: A conditional wrapper example.
-
-version: 1.0.0
+publish_to: 'none'
+version: 1.0.0+1
 
 environment:
   sdk: ">=2.12.0-0 <3.0.0"
@@ -9,8 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   conditional_wrapper:
-      path: ../
+    path: ../
 
 dev_dependencies:
   flutter_test:
