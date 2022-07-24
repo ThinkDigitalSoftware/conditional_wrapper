@@ -1,12 +1,12 @@
 name: conditional_wrapper
-description: A widget that allows you to conditionally wrap a child
+description: A widget that allows you to conditionally wrap a child subtree
 repository: https://github.com/ThinkDigitalSoftware/conditional_wrapper
 issue_tracker: https://github.com/ThinkDigitalSoftware/conditional_wrapper/issues
 homepage: https://github.com/ThinkDigitalSoftware/conditional_wrapper
-version: 2.0.0
+version: 2.0.1
 
 environment:
-  sdk: ">=2.12.0-259.9.beta <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
